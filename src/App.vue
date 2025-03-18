@@ -40,6 +40,18 @@ image {
   vertical-align: middle;
 }
 
+.uni-easyinput__content {
+  background-color: #f7f8fa !important;
+  height: 60px;
+  font-size: 20px;
+}
+.uni-easyinput__content-input {
+  font-size: 20px !important;
+}
+.is-input-border {
+  border: 1px solid #ebeef5;
+  border-radius: 30px !important;
+}
 // 两行省略
 .ellipsis {
   overflow: hidden;

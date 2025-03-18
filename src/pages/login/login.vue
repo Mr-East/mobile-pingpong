@@ -4,14 +4,17 @@
       <image src="~@/static/images/login_bg.png" class="login-bg" />
       <div class="title">欢迎来到SpinScope 👋</div>
       <div class="login-button" @click="handleLogin()">登录</div>
-      <div class="register-button">注册</div>
+      <div class="register-button" @click="handleRegister()">注册</div>
     </div>
  
 </template>
 
 <script lang="ts" setup>
 const handleLogin = () => {
-  uni.switchTab({ url: '/pages/home/home' })
+  uni.navigateTo({ url: '/pages/loginForm/loginForm' })
+}
+const handleRegister = () => {
+  uni.navigateTo({ url: '/pages/register/register' })
 }
 </script>
 

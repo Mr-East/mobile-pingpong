@@ -43,6 +43,18 @@
 			"style": {
 				"navigationBarTitleText": "注册"
 			}
+		},
+		{
+			"path": "pages/chat/chat",
+			"style": {
+				"navigationBarTitleText": "聊天页面"
+			}
+		},
+		{
+			"path": "pages/loginForm/loginForm",
+			"style": {
+				"navigationBarTitleText": "登录"
+			}
 		}
 	],
 	"globalStyle": {

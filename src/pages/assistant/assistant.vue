@@ -1,7 +1,7 @@
 <template>
   <div class="assistant">
     <div class="assistant-container">
-      <div v-for="item in assistantData" :key="item.title" class="card-wrapper">
+      <div v-for="item in assistantData" :key="item.title" class="card-wrapper" @click="toChat()"> 
         <Card :title="item.title" :desc="item.desc" :icon="item.icon"></Card>
       </div>
     </div>
@@ -28,6 +28,11 @@ const assistantData = ref([
     icon: 'assistant_analysis.png',
   },
 ])
+const toChat = () => {
+  uni.navigateTo({
+    url: '/pages/chat/chat',
+  })
+}
 </script>
 
 <style lang="scss" scoped>

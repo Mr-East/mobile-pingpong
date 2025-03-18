@@ -1,7 +1,7 @@
 <template>
   <div class="register">
-    <div class="welcome">Hello there 👋</div>
-    <div class="tips">请输入你的邮箱和密码来创建账号</div>
+    <div class="welcome">Welcome back 👋</div>
+    <div class="tips">请输入你的邮箱和密码进行登录</div>
     <template>
       <view class="">
         <uni-forms :modelValue="formData" :rules="rules" validateTrigger="blur">
@@ -21,10 +21,15 @@
           </uni-forms-item>
         </uni-forms>
         <div class="tologin">
-          <span>已有账号？</span>
-          <span style="color: #201d67; font-weight: bold" @click="toLogin()">前往登录</span>
+          <span style="color: #201d67; font-weight: bold" @click="toReSetPassword()"
+            >忘记密码？</span
+          >
+          <div>
+            <span>没有账号？</span>
+            <span style="color: #201d67; font-weight: bold" @click="toRegister()">前往注册</span>
+          </div>
         </div>
-        <button class="submit" @click="handleRegister()">注册账号</button>
+        <button class="submit" @click="handleLogin()">登录</button>
       </view>
     </template>
   </div>
@@ -51,9 +56,9 @@ const rules = {
     validateTrigger: 'blur',
   },
   password: {
-  
+    // name 字段的校验规则
     rules: [
-   
+      // 校验 name 不能为空
       {
         required: true,
         errorMessage: '密码不为空',
@@ -63,14 +68,25 @@ const rules = {
     validateTrigger: 'blur',
   },
 }
-const handleRegister = () => {
-  uni.navigateTo({
-    url: '/pages/loginForm/loginForm',
+const toReSetPassword = () => {}
+const handleLogin = () => {
+  uni.showLoading({
+    title: '登录中...',
   })
+  setTimeout(() => {
+    uni.hideLoading()
+    uni.showToast({
+      title: '登录成功',
+      icon: 'success',
+    })
+    uni.switchTab({
+      url: '/pages/home/home',
+    })
+  }, 1000)
 }
-const toLogin = () => {
+const toRegister = () => {
   uni.navigateTo({
-    url: '/pages/loginForm/loginForm',
+    url: '/pages/register/register',
   })
 }
 </script>
@@ -83,8 +99,10 @@ const toLogin = () => {
   justify-content: center;
   .tologin {
     width: 100%;
+
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     font-size: 16px;
     line-height: 160%;
   }

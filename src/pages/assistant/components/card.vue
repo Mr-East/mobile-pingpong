@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" >
     <div class="icon">
       <image class="img" src="@/static/images/assistant_analysis.png" mode="scaleToFill" />
     </div>
