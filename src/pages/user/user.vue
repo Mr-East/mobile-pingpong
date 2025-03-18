@@ -17,12 +17,48 @@
       <div class="title">查看运动数据分析报告</div>
       <div class="more"><uni-icons type="forward" size="24" color="#fff"></uni-icons></div>
     </div>
+    <div class="gapline">General</div>
+    <div class="general-container">
+      <div class="item">
+        <div class="icon">
+          <image src="@/static/images/Profile.png" mode="scaleToFill" />
+        </div>
+        <div class="info">个人信息</div>
+      </div>
+      <div class="item">
+        <div class="icon">
+          <image src="@/static/images/Show.png" mode="scaleToFill" />
+        </div>
+        <div class="info">黑夜模式</div>
+      </div>
+    </div>
+    <div class="gapline">About</div>
+    <div class="about-container">
+      <div class="item">
+        <div class="icon">
+          <image src="@/static/images/Paper.png" mode="scaleToFill" />
+        </div>
+        <div class="info">帮助中心</div>
+      </div>
+      <div class="item">
+        <div class="icon">
+          <image src="@/static/images/Logout.png" mode="scaleToFill" />
+        </div>
+        <div class="info" style="color: #f75555" @click="handleLogout()">登出</div>
+      </div>
+    </div>
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const handleLogout = () => {
+  uni.navigateTo({
+    url: '/pages/login/login',
+  })
+}
+</script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .user {
   padding: 24px;
   .more {
@@ -30,6 +66,52 @@
     top: 50%;
     transform: translateY(-50%);
     right: 5%;
+  }
+  .general-container,
+  .about-container {
+    padding: 24px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .item {
+    height: 29px;
+    display: flex;
+    align-items: center;
+    .icon {
+      margin-right: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 24px;
+      width: 24px;
+    }
+    .info {
+      width: calc(100% - 24px - 24px);
+      color: #212121;
+      line-height: 160%;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+  .gapline {
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    font-size: 14px;
+    color: #9e9e9e;
+    font-weight: bold;
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: calc(100% - 60px);
+      height: 1px;
+      background-color: #eeeeee;
+    }
   }
   .profile-wrapper {
     height: 80px;
@@ -62,6 +144,7 @@
   }
 
   .analysis-wrapper {
+    margin-bottom: 28px;
     position: relative;
     padding: 0 16px;
     height: 112px;
