@@ -11,6 +11,8 @@
 
 <script lang="ts" setup>
 const handleLogin = () => {
+  
+  
   uni.navigateTo({ url: '/pages/loginForm/loginForm' })
 }
 const handleRegister = () => {

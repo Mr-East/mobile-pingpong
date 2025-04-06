@@ -10,14 +10,45 @@
       <br />
       <span>进行乒乓球运动记录分析</span>
     </div>
-    <div class="begin_button">
+    <div class="begin_button" @click="handlePopup()">
       <uni-icons type="camera" size="24" color="#fff"></uni-icons>
       <span>开始记录</span>
     </div>
+
+    <uni-popup ref="recordPopup" type="bottom" :safe-area="false">
+      <div class="popup-content">
+        <div class="tip">
+          <span>选择记录方式 </span>
+        </div>
+        <div class="options">
+          <div class="record" @click="toVideo()">
+            <uni-icons type="upload" size="20" color="#000"></uni-icons>
+            <span>上传视频</span>
+          </div>
+          <div class="upload" @click="toVideo()">
+            <uni-icons type="camera" size="20" color="#000"></uni-icons>
+            <span>使用摄像头</span>
+          </div>
+        </div>
+      </div>
+    </uni-popup>
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const recordPopup = ref<any>(null)
+
+const toVideo = () => {
+  uni.navigateTo({
+    url: '/pages/video/video',
+  })
+}
+const handlePopup = () => {
+  recordPopup.value.open('bottom')
+}
+</script>
 
 <style lang="scss">
 .home {
@@ -30,6 +61,33 @@
   &-logo {
     height: 150px;
     width: 138px;
+  }
+  .popup-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 36px 36px 0 0;
+    background-color: #fff;
+    .tip {
+      width: 100%;
+      font-size: 24px;
+      font-weight: bold;
+      color: #6972f0;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #eeeeee;
+    }
+    .upload {
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 160%;
+    }
+    .record {
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 160%;
+      margin-bottom: 24px;
+    }
   }
   .welcome-title {
     line-height: 160%;
@@ -63,9 +121,5 @@
   margin-bottom: 25px;
   font-size: 18px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  uni-icons {
-    vertical-align: middle; // 覆盖组件默认对齐
-    line-height: 1; // 清除图标自带行高影响
-  }
 }
 </style>

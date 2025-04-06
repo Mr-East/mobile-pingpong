@@ -52,6 +52,10 @@ image {
   border: 1px solid #ebeef5;
   border-radius: 30px !important;
 }
+.uni-icons {
+  vertical-align: middle; // 覆盖组件默认对齐
+  line-height: 1; // 清除图标自带行高影响
+}
 // 两行省略
 .ellipsis {
   overflow: hidden;
